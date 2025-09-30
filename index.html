@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baranna Dives LLP</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Baranna Dives LLP</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#divisions">Divisions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div>
+      <h2>Advancing Sustainable Marine Practices</h2>
+      <p>Dedicated to innovative solutions, environmental stewardship, and harmony with the marine ecosystem.</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>At Baranna Dives LLP, we're dedicated to advancing sustainable marine practices through innovative solutions, 
+      environmental stewardship, and harmonious relationships between human activities and the marine ecosystem. 
+      Our mission is to become a leading provider of integrated marine services, driving growth in the blue economy 
+      while protecting the marine environment for future generations.</p>
+  </section>
+
+ <!-- Divisions -->
+<section id="divisions">
+  <h2>Our Divisions</h2>
+  <div class="cards">
+
+    <!-- Dive Division -->
+    <div class="card">
+      <a href="dive-division.html">
+        <i class="fas fa-swimmer division-icon"></i>
+        <h3>Dive </h3>
+<span class="division-subtitle">Blue Horizon</span>
+      </a>
+    </div>
+
+    <!-- Marine Division -->
+    <div class="card">
+      <a href="marine-division.html">
+        <i class="fas fa-ship division-icon"></i>
+        <h3>Marine </h3>
+<span class="division-subtitle">Aqua Dynamics</span>
+
+      </a>
+    </div>
+
+    <!-- Fisheries Division -->
+    <div class="card">
+      <a href="fisheries-division.html">
+        <i class="fas fa-fish division-icon"></i>
+        <h3>Fisheries </h3>
+<span class="division-subtitle">Tide Treasures</span>
+
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Font Awesome CDN (add this inside <head>) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact">
+      <p>Email: info@barannadives.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Kochi, Kerala, India</p>
+      <form action="https://formspree.io/f/mabcdxyz" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+  <button type="submit">Send Message</button>
+  <input type="hidden" name="_redirect" value="thankyou.html">
+</form>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Baranna Dives LLP. All Rights Reserved.</p>
+  </footer>
+<script src="js/voice-assistant.js"></script>
+<!-- AI Chat Widget -->
+<div id="chat-widget">
+  <div id="chat-header">Chat with Barana 🤖</div>
+  <div id="chat-body"></div>
+  <input type="text" id="chat-input" placeholder="Type your question...">
+  <button id="chat-send">Send</button>
+</div>
+<script>
+const chatBody = document.getElementById('chat-body');
+const chatInput = document.getElementById('chat-input');
+const chatSend = document.getElementById('chat-send');
+
+// Dummy AI responses (replace with OpenAI API later)
+const aiResponses = {
+  "hi": "Hello.",
+  "hello": "Hi.",
+  "dive": "Our Dive Division (Blue Horizon) offers snorkeling, diving, and underwater training.",
+  "marine": "Marine Division (Aqua Dynamics) handles boat building, FAD deployment, and environmental monitoring.",
+  "fisheries": "Fisheries Division (Tide Treasures) focuses on aquaculture, seaweed cultivation, and training programs.",
+  "hello": "Hello! How can I assist you today?",
+  "default": "Sorry, I didn't understand that. You can ask about Dive, Marine, or Fisheries divisions."
+};
+
+chatSend.addEventListener('click', () => {
+  const userText = chatInput.value.trim();
+  if(userText === "") return;
+
+  // Show user message
+  chatBody.innerHTML += `<div class="chat-message-user">You: ${userText}</div>`;
+
+  // Simple AI response logic
+  let aiText = aiResponses.default;
+  for(const key in aiResponses){
+    if(userText.toLowerCase().includes(key)){
+      aiText = aiResponses[key];
+      break;
+    }
+  }
+
+  // Show AI message
+  chatBody.innerHTML += `<div class="chat-message-ai">Barana: ${aiText}</div>`;
+
+  chatInput.value = '';
+  chatBody.scrollTop = chatBody.scrollHeight;
+});
+
+// Enter key sends message
+chatInput.addEventListener('keypress', function(e){
+  if(e.key === 'Enter') chatSend.click();
+});
+</script>
+
+</body>
+</html>
